@@ -1,0 +1,17 @@
+{
+    "name": "Solitario.Controller",
+    "rootNamespace": "",
+    "references": [
+        "GUID:796a9cdf6d7df644284bf30c46972134",
+        "GUID:1e7b9c8df7406c146b478be847af3040"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

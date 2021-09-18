@@ -1,0 +1,16 @@
+{
+    "name": "Solitario.Domain.Interface",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b0e7465d9df6f9049be3c1e1af476171"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
