@@ -6,5 +6,6 @@ namespace Solitario.Service.Interface
     {
         IDeck Deck { get; }
         void StartGame();
+        void SortCards();
     }
 }
