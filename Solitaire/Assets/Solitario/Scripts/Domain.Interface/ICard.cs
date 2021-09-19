@@ -4,7 +4,9 @@ namespace Solitario.Domain.Interface
     {
         public Suit Suit { get; }
         public Rank Value { get; }
-        
+        public bool FaceUp { get; }
+
+        void Flip();
     }
 
     public enum Suit
@@ -12,12 +14,12 @@ namespace Solitario.Domain.Interface
         Clubs,
         Diamonds,
         Hearts,
-        Spades
+        Spades,
+        Unknown
     }
 
     public enum Rank
     {
-        Unknown,
         Ace,
         Two,
         Three,
@@ -30,6 +32,7 @@ namespace Solitario.Domain.Interface
         Ten,
         Jack,
         Queen,
-        King
+        King,
+        Unknown
     }
 }
