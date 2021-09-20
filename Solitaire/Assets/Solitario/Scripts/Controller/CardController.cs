@@ -44,7 +44,7 @@ namespace Solitario.Controller
                 (int) Card.Suit % 2 == 0 ? Color.red : Color.black;
         }
 
-        public void Flip()
+        public Tween Flip()
         {
             Card.Flip();
             
@@ -59,22 +59,15 @@ namespace Solitario.Controller
                 BackSide.gameObject.SetActive(!Card.FaceUp);
             });
             seq.Append(Holder.DOScaleX(1, 0.1f));
+            return seq;
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
             if (!Card.FaceUp)
                 return;
-            
-            transform.SetAsLastSibling();
-            
-            CurrentPosition = RectTransform.anchoredPosition;
-            var clickPos = eventData.position;
-            PointerOffset = RectTransform.anchoredPosition;
-            var offsetY = clickPos.y - 1334 - PointerOffset.y;
-            var offsetX = clickPos.x - 750 - PointerOffset.x;
 
-            PointerOffset = new Vector2(offsetX, offsetY);
+            SetNewPosition(eventData);
         }
         
         public void OnDrag(PointerEventData eventData)
@@ -82,11 +75,7 @@ namespace Solitario.Controller
             if (!Card.FaceUp)
                 return;
             
-            Drag = true;
-            var dragPosition = eventData.position;
-            dragPosition.y = eventData.position.y - 1334 - PointerOffset.y;
-            dragPosition.x = eventData.position.x - 750 - PointerOffset.x;
-            RectTransform.anchoredPosition = dragPosition;
+            DragCard(eventData);
         }
         
         public void OnPointerUp(PointerEventData eventData)
@@ -94,8 +83,7 @@ namespace Solitario.Controller
             if (!Card.FaceUp)
                 return;
             
-            Drag = false;
-            RectTransform.anchoredPosition = CurrentPosition;
+            ResetMove();
         }
         
         private void OnTriggerEnter2D(Collider2D other)
@@ -106,9 +94,38 @@ namespace Solitario.Controller
                 var otherCard = otherCardController.Card;
                 if (otherCard.FaceUp && otherCard.Value == Card.Value + 1)
                 {
+                    transform.SetParent(otherCardController.transform.parent);
                     CurrentPosition = otherCardController.RectTransform.anchoredPosition - new Vector2(0, RectTransform.rect.height / 3);
                 }
             }
+        }
+
+        private void SetNewPosition(PointerEventData data)
+        {
+            transform.SetAsLastSibling();
+            
+            CurrentPosition = RectTransform.anchoredPosition;
+            var clickPos = data.position;
+            PointerOffset = RectTransform.anchoredPosition;
+            var offsetY = clickPos.y - 1334 - PointerOffset.y;
+            var offsetX = clickPos.x - 750 - PointerOffset.x;
+
+            PointerOffset = new Vector2(offsetX, offsetY);
+        }
+
+        private void DragCard(PointerEventData data)
+        {
+            Drag = true;
+            var dragPosition = data.position;
+            dragPosition.y = data.position.y - 1334 - PointerOffset.y;
+            dragPosition.x = data.position.x - 750 - PointerOffset.x;
+            RectTransform.anchoredPosition = dragPosition;
+        }
+
+        private void ResetMove()
+        {
+            Drag = false;
+            RectTransform.anchoredPosition = CurrentPosition;
         }
     }
 }

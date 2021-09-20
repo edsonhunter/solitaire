@@ -5,6 +5,7 @@ namespace Solitario.Domain.Interface
         public Suit Suit { get; }
         public Rank Value { get; }
         public bool FaceUp { get; }
+        public bool Interactive { get; }
 
         void Flip();
     }
