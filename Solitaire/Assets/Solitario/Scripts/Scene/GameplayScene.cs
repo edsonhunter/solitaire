@@ -57,8 +57,6 @@ namespace Solitario.Scene
                     if(j == i)  
                         seq.Append(CardControllers[cardIdx].Flip());
                    
-                    CardControllers[cardIdx].transform.SetParent(TableauPositions[j]);
-                    CardControllers[cardIdx].transform.SetAsLastSibling();
                     cardIdx++;
                 }
             }

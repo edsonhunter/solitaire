@@ -18,7 +18,6 @@ namespace Solitario.Controller
         [field: SerializeField] private CardProperties Properties { get; set; }
 
         private Vector2 CurrentPosition { get; set; }
-        private RectTransform Parent { get; set; }
 
         public RectTransform RectTransform { get; private set; }
         private Vector2 PointerOffset { get; set; }
@@ -29,7 +28,6 @@ namespace Solitario.Controller
         {
             RectTransform = GetComponent<RectTransform>();
             CurrentPosition = RectTransform.anchoredPosition;
-            Parent = transform.parent.GetComponent<RectTransform>();
         }
 
         public void Init(ICard card)
@@ -97,7 +95,7 @@ namespace Solitario.Controller
                 var otherCard = otherCardController.Card;
                 if (otherCard.FaceUp && otherCard.Value == Card.Value + 1)
                 {
-                    Parent = otherCardController.RectTransform;
+                    CurrentPosition = otherCardController.RectTransform.anchoredPosition - new Vector2(0, RectTransform.rect.height / 3);
                 }
             }
         }
@@ -130,8 +128,7 @@ namespace Solitario.Controller
             Drag = false;
             RectTransform.anchoredPosition = CurrentPosition;
             
-            transform.SetParent(Parent);
-            CurrentPosition = Parent.anchoredPosition - new Vector2(0, RectTransform.rect.height / 3);
+
         }
     }
 }
