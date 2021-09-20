@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using DG.Tweening;
 using Solitario.Domain.Interface;
 using UnityEngine;
@@ -16,10 +15,10 @@ namespace Solitario.Controller
         [field: SerializeField] private RectTransform FrontSide { get; set; }
         [field: SerializeField] private RectTransform BackSide { get; set; }
         [field: SerializeField] private RectTransform Holder { get; set; }
-
         [field: SerializeField] private CardProperties Properties { get; set; }
 
-        public Vector2 CurrentPosition { get; set; }
+        private Vector2 CurrentPosition { get; set; }
+        private RectTransform Parent { get; set; }
 
         public RectTransform RectTransform { get; private set; }
         private Vector2 PointerOffset { get; set; }
@@ -30,6 +29,7 @@ namespace Solitario.Controller
         {
             RectTransform = GetComponent<RectTransform>();
             CurrentPosition = RectTransform.anchoredPosition;
+            Parent = transform.parent.GetComponent<RectTransform>();
         }
 
         public void Init(ICard card)
@@ -88,14 +88,16 @@ namespace Solitario.Controller
         
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (!Card.Interactive)
+                return;
+            
             var otherCardController = other.gameObject.GetComponent<CardController>();
             if (otherCardController != null)
             {
                 var otherCard = otherCardController.Card;
                 if (otherCard.FaceUp && otherCard.Value == Card.Value + 1)
                 {
-                    transform.SetParent(otherCardController.transform.parent);
-                    CurrentPosition = otherCardController.RectTransform.anchoredPosition - new Vector2(0, RectTransform.rect.height / 3);
+                    Parent = otherCardController.RectTransform;
                 }
             }
         }
@@ -116,6 +118,7 @@ namespace Solitario.Controller
         private void DragCard(PointerEventData data)
         {
             Drag = true;
+            
             var dragPosition = data.position;
             dragPosition.y = data.position.y - 1334 - PointerOffset.y;
             dragPosition.x = data.position.x - 750 - PointerOffset.x;
@@ -126,6 +129,9 @@ namespace Solitario.Controller
         {
             Drag = false;
             RectTransform.anchoredPosition = CurrentPosition;
+            
+            transform.SetParent(Parent);
+            CurrentPosition = Parent.anchoredPosition - new Vector2(0, RectTransform.rect.height / 3);
         }
     }
 }

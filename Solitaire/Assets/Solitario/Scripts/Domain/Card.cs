@@ -36,6 +36,7 @@ namespace Solitario.Domain
 
         public void Flip()
         {
+            Interactive = !Interactive;
             FaceUp = !FaceUp;
         }
     }

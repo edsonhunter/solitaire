@@ -51,7 +51,9 @@ namespace Solitario.Scene
                 {
                     yield return new WaitForSeconds(0.1f);
                     var seq = DOTween.Sequence();
-                    seq.Append(CardControllers[cardIdx].RectTransform.DOMove(new Vector3(TableauPositions[j].position.x, (TableauPositions[j].position.y - i) / 3, 0), 1));
+                    seq.Append(CardControllers[cardIdx].RectTransform.DOMove(
+                        new Vector3(TableauPositions[j].position.x, (TableauPositions[j].position.y - i) / 3, 0),
+                        1));
                     if(j == i)  
                         seq.Append(CardControllers[cardIdx].Flip());
                    
