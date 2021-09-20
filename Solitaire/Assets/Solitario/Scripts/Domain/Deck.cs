@@ -16,10 +16,6 @@ namespace Solitario.Domain
         public Deck(IList<ICard> cards) : this()
         {
             Cards = new List<ICard>(cards);
-            foreach (var card in Cards)
-            {
-                Debug.Log($"Card: {card.Suit} | {card.Value}");
-            }
         }
         
         public void Shuffle()

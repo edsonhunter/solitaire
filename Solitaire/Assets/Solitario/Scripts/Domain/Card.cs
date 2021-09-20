@@ -8,11 +8,13 @@ namespace Solitario.Domain
         public Suit Suit { get; private set; }
         public Rank Value { get; private set; }
         public bool FaceUp { get; private set; }
+        public bool Interactive { get; private set; }
 
         private Card()
         {
             Suit = Suit.Unknown;
             Value = Rank.Unknown;
+            Interactive = false;
         }
 
         public Card(int suit, int value) : this()
@@ -27,8 +29,14 @@ namespace Solitario.Domain
             Value = (Rank) value;
         }
 
+        public void ToggleActive(bool active)
+        {
+            Interactive = active;
+        }
+
         public void Flip()
         {
+            Interactive = !Interactive;
             FaceUp = !FaceUp;
         }
     }

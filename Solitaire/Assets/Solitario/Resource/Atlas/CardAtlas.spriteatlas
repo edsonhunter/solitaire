@@ -45,6 +45,7 @@ SpriteAtlas:
     packables:
     - {fileID: 21300000, guid: 65b3f48afcc599d4396557750140c22e, type: 3}
     - {fileID: 21300000, guid: f241d547240c34e468af1977e879524f, type: 3}
+    - {fileID: 21300000, guid: 2ebbe7d7b7341b546acd46f0da63f6eb, type: 3}
     - {fileID: 21300000, guid: e93f332910f9e9645be3e3c10adff802, type: 3}
     - {fileID: 21300000, guid: 1d576ae9586c54b4bb3adc69aee16ef4, type: 3}
     - {fileID: 21300000, guid: 44dd8113e2ff1c942802677aed830cd8, type: 3}
@@ -65,7 +66,7 @@ SpriteAtlas:
     - {fileID: 21300000, guid: 5f538d60599039f4094657e9ae54a933, type: 3}
     - {fileID: 21300000, guid: 4d4a71f86346dda4dbcc51b4fd8eae79, type: 3}
     - {fileID: 21300000, guid: ec2c1e102dbf1144292b24a84c51e695, type: 3}
-    totalSpriteSurfaceArea: 149185
+    totalSpriteSurfaceArea: 167061
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -85,6 +86,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f241d547240c34e468af1977e879524f, type: 3}
   - {fileID: 21300000, guid: 442d8987b1a2a144083b4ad6f6894984, type: 3}
   - {fileID: 21300000, guid: 1ef94ab7d89daf741b540c15f06e0c75, type: 3}
+  - {fileID: 21300000, guid: 2ebbe7d7b7341b546acd46f0da63f6eb, type: 3}
   - {fileID: 21300000, guid: 4d4a71f86346dda4dbcc51b4fd8eae79, type: 3}
   - {fileID: 21300000, guid: e93f332910f9e9645be3e3c10adff802, type: 3}
   - {fileID: 21300000, guid: 1d576ae9586c54b4bb3adc69aee16ef4, type: 3}
@@ -108,6 +110,7 @@ SpriteAtlas:
   - retro-carte
   - 10
   - 7
+  - fondo-carta
   - quadri
   - 2
   - 3
